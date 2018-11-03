@@ -70,5 +70,7 @@ class DrawVIew: UIView {
             clockwise: true)
         
         context?.fillPath()
+        
+        context?.stroke(CGRect(x: self.frame.width - 90, y: self.center.y - 20, width: 90, height: 40))
     }
 }
