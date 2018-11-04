@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     
     func makeH() {
         for i in 0 ..< 24 {
-            let tmp = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            tmp.font = UIFont(name: "Courier", size: 20)
+            let tmp = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+            tmp.font = UIFont(name: "Courier", size: 50)
             tmp.textAlignment = .center
             tmp.text = "\(i)"
             self.view.addSubview(tmp)
@@ -31,13 +31,8 @@ class ViewController: UIViewController {
     
     func makeM() {
         for i in 0 ..< 60 {
-            let tmp = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            if (i % 5 == 0) {
-                tmp.font = UIFont(name: "Courier", size: 20)
-            }
-            else {
-                tmp.font = UIFont(name: "Courier", size: 14)
-            }
+            let tmp = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+            tmp.font = UIFont(name: "Courier", size: 50)
             tmp.textAlignment = .center
             tmp.text = "\(i)"
             self.view.addSubview(tmp)
@@ -48,13 +43,8 @@ class ViewController: UIViewController {
     
     func makeS() {
         for i in 0 ..< 60 {
-            let tmp = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            if (i % 5 == 0) {
-                tmp.font = UIFont(name: "Courier", size: 20)
-            }
-            else {
-                tmp.font = UIFont(name: "Courier", size: 14)
-            }
+            let tmp = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+            tmp.font = UIFont(name: "Courier", size: 50)
             tmp.textAlignment = .center
             tmp.text = "\(i)"
             self.view.addSubview(tmp)
@@ -66,11 +56,14 @@ class ViewController: UIViewController {
     func dispH() {
         let strH = fmtH.string(from: Date())
         let intH = Int(strH)!
+        let w: CGFloat = self.view.frame.width
+        let h: CGFloat = self.view.frame.height
+        let r: CGFloat = 300
         
         for i in 0 ..< 24 {
             let t = CGFloat.pi * 2 / 24 * CGFloat(i - intH)
-            let x = cos(t) * (self.view.frame.width / 2 - 75) + self.view.center.x
-            let y = sin(t) * (self.view.frame.width / 2 - 75) + self.view.center.y
+            let x = cos(t) * r + w / 2 - r - 100
+            let y = sin(t) * r + h / 2
             lblH[i].center = CGPoint(x: x, y: y)
             lblH[i].transform = CGAffineTransform(rotationAngle: t)
         }
@@ -79,11 +72,14 @@ class ViewController: UIViewController {
     func dispM() {
         let strM = fmtM.string(from: Date())
         let intM = Int(strM)!
+        let w: CGFloat = self.view.frame.width
+        let h: CGFloat = self.view.frame.height
+        let r: CGFloat = 400
 
         for i in 0 ..< 60 {
             let t = CGFloat.pi * 2 / 60 * CGFloat(i - intM)
-            let x = cos(t) * (self.view.frame.width / 2 - 45) + self.view.center.x
-            let y = sin(t) * (self.view.frame.width / 2 - 45) + self.view.center.y
+            let x = cos(t) * r + w / 2 - r
+            let y = sin(t) * r + h / 2
             lblM[i].center = CGPoint(x: x, y: y)
             lblM[i].transform = CGAffineTransform(rotationAngle: t)
         }
@@ -92,11 +88,14 @@ class ViewController: UIViewController {
     func dispS() {
         let strS = fmtS.string(from: Date())
         let intS = Int(strS)!
+        let w: CGFloat = self.view.frame.width
+        let h: CGFloat = self.view.frame.height
+        let r: CGFloat = 500
 
         for i in 0 ..< 60 {
             let t = CGFloat.pi * 2 / 60 * CGFloat(i - intS)
-            let x = cos(t) * (self.view.frame.width / 2 - 15) + self.view.center.x
-            let y = sin(t) * (self.view.frame.width / 2 - 15) + self.view.center.y
+            let x = cos(t) * r + w / 2 - r + 100
+            let y = sin(t) * r + h / 2
             lblS[i].center = CGPoint(x: x, y: y)
             lblS[i].transform = CGAffineTransform(rotationAngle: t)
         }
@@ -111,9 +110,8 @@ class ViewController: UIViewController {
         fmtH.dateFormat = "HH"
         fmtM.dateFormat = "mm"
         fmtS.dateFormat = "ss"
-        
-        makeH()
         makeM()
+        makeH()
         makeS()
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {

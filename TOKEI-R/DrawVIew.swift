@@ -9,14 +9,13 @@
 import UIKit
 
 class DrawVIew: UIView {
-
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         
         context?.setFillColor(UIColor.white.cgColor)
-        context?.setStrokeColor(UIColor.black.cgColor)
-        context?.setLineWidth(2.0)
-        
+        context?.setStrokeColor(UIColor.magenta.cgColor)
+        context?.setLineWidth(5.0)
+/*
         context?.beginPath()
         
         context?.addArc(
@@ -70,7 +69,7 @@ class DrawVIew: UIView {
             clockwise: true)
         
         context?.fillPath()
-        
-        context?.stroke(CGRect(x: self.frame.width - 90, y: self.center.y - 20, width: 90, height: 40))
+  */
+        context?.stroke(CGRect(x: self.center.x - 150, y: self.center.y - 50, width: 300, height: 100))
     }
 }
