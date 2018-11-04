@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SpriteKit
 
 class ViewController: UIViewController {
+
+    var scene: SKScene!
 
     var lblH: [UILabel] = []
     var lblM: [UILabel] = []
@@ -100,16 +103,55 @@ class ViewController: UIViewController {
             lblS[i].transform = CGAffineTransform(rotationAngle: t)
         }
     }
-
+    
+    func makeH2() {
+        let tmp = SKNode()
+        
+        let tmp1 = SKShapeNode(circleOfRadius: 100)
+        tmp1.position = CGPoint(x: 0, y: 0)
+        tmp1.fillColor = UIColor.lightGray
+        tmp1.strokeColor = UIColor.white
+        tmp.addChild(tmp1)
+        
+        for i in 0 ..< 24 {
+            let tmp2 = SKLabelNode(fontNamed: "Courier")
+            tmp2.text = String(format: "%02d", i)
+            tmp2.fontSize = 20.0
+            tmp2.fontColor = UIColor.black
+            tmp2.verticalAlignmentMode = .center
+            tmp2.horizontalAlignmentMode = .center
+            
+            
+            let t = CGFloat.pi * 2 / 24 * CGFloat(i)
+            let x = cos(t) * 90
+            let y = sin(t) * 90
+            tmp2.position = CGPoint(x: x, y: y)
+            tmp2.zRotation = t
+            tmp.addChild(tmp2)
+        }
+        
+        tmp.position = CGPoint(x: 160, y: 160)
+        scene.addChild(tmp)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        scene = SKScene(size: CGSize(width: 320, height: 320))
+        scene.scaleMode = .aspectFit
+        let skView = self.view as! SKView
+        skView.presentScene(scene)        
+        
         fmtH = DateFormatter()
         fmtM = DateFormatter()
         fmtS = DateFormatter()
         fmtH.dateFormat = "HH"
         fmtM.dateFormat = "mm"
         fmtS.dateFormat = "ss"
+        
+        makeH2()
+
+        /*
         makeM()
         makeH()
         makeS()
@@ -120,8 +162,6 @@ class ViewController: UIViewController {
             self.dispM()
             self.dispS()
         })
+ */
     }
-
-
 }
-

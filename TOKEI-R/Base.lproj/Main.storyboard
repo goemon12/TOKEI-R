@@ -14,22 +14,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TOKEI_R" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFe-BR-Cmp" customClass="DrawVIew" customModule="TOKEI_R" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="eFe-BR-Cmp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LYw-27-mYs"/>
-                            <constraint firstAttribute="trailing" secondItem="eFe-BR-Cmp" secondAttribute="trailing" id="Ujo-IT-QVS"/>
-                            <constraint firstItem="eFe-BR-Cmp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="q0I-Ss-IKK"/>
-                            <constraint firstAttribute="bottom" secondItem="eFe-BR-Cmp" secondAttribute="bottom" id="qhe-xk-8A3"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
